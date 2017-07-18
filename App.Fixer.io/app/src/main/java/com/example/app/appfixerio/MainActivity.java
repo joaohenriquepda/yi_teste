@@ -7,6 +7,7 @@ import android.util.Log;
 import com.example.app.appfixerio.models.Exchange;
 import com.example.app.appfixerio.models.FixerInformations;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,48 +37,53 @@ public class MainActivity extends AppCompatActivity {
          *  Nao e possivel instanciar uma interface, mas com o polimorfismo
          *  ele retorna uma classe q implementa a interface
          */
-        SimpleDateFormat formato =  new SimpleDateFormat("YYYY-MM-dd");
-        Date data1 = new Date(System.currentTimeMillis());
-        Date data2 = new Date(System.currentTimeMillis());
-
-        String name = formato.format(data1);
-        Log.e(TAG,name);
-
-
         ConsumeService service = retrofit.create(ConsumeService.class);
 
-        Date date = new Date(System.currentTimeMillis());
-//        Log.e(TAG, String.format("%s",date));
-       Call<Exchange> request = service.listInformation("2017-07-17","USD");
 
-        /**
-         * O uso do enqueue e de forma assincrona para que a UI nao trave
-         */
-        request.enqueue(new Callback<Exchange>() {
-            @Override
-            public void onResponse(Call<Exchange> call, Response<Exchange> response) {
-                if (!response.isSuccessful()){
-                    Log.e(TAG,"Message:" +response.code());
-                }else{
-                    Log.e(TAG,"AQui");
-                    Exchange informations = response.body();
-                    Log.e(TAG,"------------------------");
-                    Log.e(TAG,String.format("%s",informations.base));
-                    Log.e(TAG,String.format("%s",informations.date));
-                    Log.e(TAG,String.format("%s",informations.rates.get("BRL")));
+        SimpleDateFormat formato =  new SimpleDateFormat("yyyy-mm-dd");
+        Date dt1 = null;
+        try {
+            dt1 = formato.parse("2009-08-07");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Date dt2 = null;
+        try {
+            dt2 = formato.parse("2011-11-17");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Calendar cal = Calendar.getInstance();
+        cal.setTime (dt1);
+        for (Date dt = dt1; dt.compareTo (dt2) <= 0; ) {
+            Log.e(TAG,formato.format(dt));
+            cal.add (Calendar.DATE, +1);
+            dt = cal.getTime();
 
-                    // for (Exchange exc: informations){
-                    //     Log.e(TAG,String.format("$s",exc.date));
-                    // }
+            Call<Exchange> request = service.listInformation(formato.format(dt),"USD");
 
+            /**
+             * O uso do enqueue e de forma assincrona para que a UI nao trave
+             */
+            request.enqueue(new Callback<Exchange>() {
+                @Override
+                public void onResponse(Call<Exchange> call, Response<Exchange> response) {
+                    if (!response.isSuccessful()){
+                        Log.e(TAG,"Message:" +response.code());
+                    }else{
+                        Exchange informations = response.body();
+                        Log.e(TAG,"------------------------");
+                        Log.e(TAG,String.format("%s",informations.base));
+                        Log.e(TAG,String.format("%s",informations.date));
+                        Log.e(TAG,String.format("%s",informations.rates.get("BRL")));
+                    }
                 }
+                @Override
+                public void onFailure(Call<Exchange> call, Throwable t) {
+                    Log.e(TAG,"Error: "+ t.getMessage());
+                }
+            });
 
-            }
-
-            @Override
-            public void onFailure(Call<Exchange> call, Throwable t) {
-                Log.e(TAG,"Error: "+ t.getMessage());
-            }
-        });
+        }
     }
 }
