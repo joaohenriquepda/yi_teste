@@ -1,5 +1,6 @@
 package com.example.app.appfixerio;
 
+import com.example.app.appfixerio.models.Exchange;
 import com.example.app.appfixerio.models.FixerInformations;
 
 import java.util.Date;
@@ -24,7 +25,7 @@ public interface ConsumeService {
      */
 
     @GET("{date}")
-    Call<FixerInformations> listInformation(@Path(value = "date", encoded = true) String date, @Query("base") String extended);
+    Call<Exchange> listInformation(@Path(value = "date", encoded = true) String date, @Query("base") String extended);
 
 
 }
