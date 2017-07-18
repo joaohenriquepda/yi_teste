@@ -1,5 +1,14 @@
 package com.example.app.appfixerio;
 
+import com.example.app.appfixerio.models.FixerInformations;
+
+import java.util.Date;
+
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
+
 /**
  * Created by joao on 18/07/17.
  */
@@ -15,7 +24,7 @@ public interface ConsumeService {
      */
 
     @GET("{date}")
-    Call<FixerInformations> listInformation(@Path(value = "date", encoded = true) Date date, @Query("base") String extended);
+    Call<FixerInformations> listInformation(@Path(value = "date", encoded = true) String date, @Query("base") String extended);
 
 
 }
