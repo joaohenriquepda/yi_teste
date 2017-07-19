@@ -25,14 +25,14 @@
 
     <Button
         android:id="@+id/buttonBiggest"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Veja o Maior valor"
         tools:layout_editor_absoluteX="109dp"
         tools:layout_editor_absoluteY="107dp"
+        android:layout_marginBottom="136dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="141dp" />
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/textView"
@@ -43,5 +43,12 @@
         tools:text="Media dos valores no periodo: "
         android:layout_above="@+id/textMedia"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/buttonSmallest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Veja o menor valor"
+        android:layout_above="@+id/buttonBiggest" />
 
 </RelativeLayout>

@@ -54,13 +54,13 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat formato =  new SimpleDateFormat("yyyy-mm-dd");
         Date dt1 = null;
         try {
-            dt1 = formato.parse("2011-08-07");
+            dt1 = formato.parse("2009-08-07");
         } catch (ParseException e) {
             e.printStackTrace();
         }
         Date dt2 = null;
         try {
-            dt2 = formato.parse("2011-08-09");
+            dt2 = formato.parse("2011-11-17");
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -108,8 +108,6 @@ public class MainActivity extends AppCompatActivity {
                             auxSmallest = informations.rates.get("BRL");
                             Log.e(TAG,"Menor valor analisado: " + informations.rates.get("BRL") );
                         }
-
-
                     }
                 }
                 @Override
@@ -119,17 +117,26 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        ListView listExchange = (ListView) findViewById(R.id.listExchange);
         TextView test = (TextView) findViewById(R.id.textMedia);
 
         Log.e(TAG,"onCreate");
+
+        Button btSmallest = (Button) findViewById(R.id.buttonSmallest);
+
+        btSmallest.setOnClickListener(new View.OnClickListener() {
+
+                public void onClick(View view) {
+                    launchActivitySmallest();
+                }
+            }
+        );
 
         Button btBiggest = (Button) findViewById(R.id.buttonBiggest);
 
         btBiggest.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View view) {
-                    launchActivity();
+                    launchActivityBiggest();
                 }
             }
         );
@@ -158,11 +165,19 @@ public class MainActivity extends AppCompatActivity {
         Log.e(TAG,"onStop");
     }
 
-    private void launchActivity() {
+    private void launchActivityBiggest() {
         Intent intent = new Intent(this, BiggestActivity.class);
         Gson gS = new Gson();
         String target = gS.toJson(biggestExchange);
         intent.putExtra("biggest",target);
+        this.startActivity(intent);
+    }
+
+    private void launchActivitySmallest() {
+        Intent intent = new Intent(this, SmallestActivity.class);
+        Gson gS = new Gson();
+        String target = gS.toJson(smallestExchange);
+        intent.putExtra("smallest",target);
         this.startActivity(intent);
     }
 }
