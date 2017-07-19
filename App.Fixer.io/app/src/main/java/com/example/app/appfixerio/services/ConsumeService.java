@@ -1,9 +1,6 @@
-package com.example.app.appfixerio;
+package com.example.app.appfixerio.services;
 
 import com.example.app.appfixerio.models.Exchange;
-import com.example.app.appfixerio.models.FixerInformations;
-
-import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -20,7 +17,7 @@ public interface ConsumeService {
 
     /**
      * This function expected two params
-     * date: YYYY-MM-DD
+     * String: YYYY-MM-DD
      * base: string "example: USD"
      */
 

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.app.appfixerio.BiggestActivity">
+
+    <TextView
+        android:id="@+id/textDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="139dp"
+        android:layout_x="224dp"
+        android:layout_y="111dp"
+        android:text=""
+        tools:layout_editor_absoluteX="235dp"
+        tools:layout_editor_absoluteY="412dp" />
+
+    <TextView
+        android:id="@+id/labelDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="110dp"
+        android:layout_y="113dp"
+        android:text="Data: " />
+
+
+    <TextView
+        android:id="@+id/labelRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="97dp"
+        android:layout_y="165dp"
+        android:text="Cotaçao: " />
+
+    <TextView
+        android:id="@+id/textRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="139dp"
+        android:layout_x="220dp"
+        android:layout_y="166dp"
+        android:text=""
+        tools:layout_editor_absoluteX="235dp"
+        tools:layout_editor_absoluteY="412dp" />
+
+    <Button
+        android:id="@+id/buttonHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="154dp"
+        android:layout_x="147dp"
+        android:layout_y="270dp"
+        android:text="Voltar"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="190dp" />
+
+
+</AbsoluteLayout>
