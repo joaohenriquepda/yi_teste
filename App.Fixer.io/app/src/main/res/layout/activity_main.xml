@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,12 +7,48 @@
     tools:context="com.example.app.appfixerio.MainActivity">
 
     <TextView
+        android:id="@+id/textMedia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_above="@+id/buttonBiggest"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="98dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
-</android.support.constraint.ConstraintLayout>
+    <ListView
+        android:id="@+id/listExchange"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:layout_editor_absoluteX="105dp"
+        tools:layout_editor_absoluteY="95dp" />
+
+    <Button
+        android:id="@+id/buttonBiggest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Veja o Maior valor"
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="107dp"
+        android:layout_marginBottom="136dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="75dp"
+        android:text="Media dos valores no periodo: "
+        tools:text="Media dos valores no periodo: "
+        android:layout_above="@+id/textMedia"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/buttonSmallest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Veja o menor valor"
+        android:layout_above="@+id/buttonBiggest" />
+
+</RelativeLayout>
